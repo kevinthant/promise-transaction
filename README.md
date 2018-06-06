@@ -1,6 +1,10 @@
 # promise-transaction
 Small library written in Node JS for making multiple promise calls in emulated ACID transaction manner in traditional database system although not exactly same. But still offer all or nothing approch with option for multiple retries in each step of a transaction.
 
+This small library can be useful in your project where you have to make multiple API calls in a single request to processed for a user such as in ecommerce or banking transaction checkout process where all or nothing (aka) ACID property needs to be remained. 
+
+To emulate `rollback` process as in a transaction for traditional RDBMS, you can define a rollback promise to be made if a particular step fails. If no rollback is required for a particular step, you can simply define a function that returns a resolved promise: `() => Promise.resolve()` 
+
 
 How to use it?
 --------------
