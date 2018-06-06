@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git@github.com:kevinthant/promise-transaction.git"
   },
+  "engines" : { 
+    "node" : ">=8.9.4"
+  },
   "dependencies": {
     "debug": "^3.1.0",
     "promise-retry": "^1.1.1"
