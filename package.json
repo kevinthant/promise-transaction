@@ -1,6 +1,6 @@
 {
   "name": "promise-transaction",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small library for making multiple promise calls in emulated ACID transaction manner in traditional database system although not exactly same. But still offer all or nothing approch with option for multiple retries in each step of a transaction",
   "main": "./dist/Transaction.js",
   "scripts": {
