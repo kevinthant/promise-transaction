@@ -20,6 +20,7 @@ const t = new Transaction([
     name: 'seed',
     perform: () => Promise.resolve(3),
     rollback: () => false,
+    retries: 1, // optionally you can define how many retries you like to run if initial attemp fails for this step
   },
   {
     name: 'square',
