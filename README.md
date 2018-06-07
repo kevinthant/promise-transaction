@@ -3,7 +3,14 @@ Small library written in Node JS for making multiple of sequential and interdepe
 
 This small library can be useful in your project where you have to make multiple of sequential and interdependent API calls in a single request to processed for a user such as in ecommerce or banking transaction checkout process where all or nothing (aka) ACID property needs to be remained. 
 
+Conceptually, a transaction is composed of a sequence of tasks/steps to be performed sequentially. Each task contains three information: 
+  * name - name of the task or step in string value, should
+  * perform - a callback function that returns a promise which can be used for making a remote API call. This callback function can receive a single parameter `context` which contains data/result from prior tasks and other properties from initial context object passed to `Transaction` constructor. To access, data from prior tasks, you can access by `context.data[taskName]`
+  * rollback - a callback function that will be called in case if the task fails
+
 To emulate `rollback` process as in a transaction for traditional RDBMS, you can define a rollback promise to be made if a particular step fails. If no rollback is required for a particular step, you can simply define a function that returns a resolved promise: `() => Promise.resolve()` 
+
+To use the `Transaction` class from this package, you can intialize with the first parameter as an array that contains task list you want to execute. Tasks will be executed in the same order you pass sequentially. Second parameter, can be an initial context object which will be just normal literal Javascript object. 
 
 
 How to use it?
@@ -36,7 +43,7 @@ const t = new Transaction([
 ]);
 
 return t.process().then((result) => {
-expect(result).to.equal(9);
+  console.log(result); // should be value of 9 = 3 x 3
 });
 
 ```
